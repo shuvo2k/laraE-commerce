@@ -12,8 +12,14 @@ require 'admin.php';
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::group(['as' => 'admin.' ,'prefix' => 'admin', 'namespace' => 'Admin'], function () {
 
-Route::view('/admin', 'admin.dashboard.index');
+    Route::get('login', 'LoginController@showLoginForm')->name('login');
+    Route::post('login', 'LoginController@login')->name('login.post');
+    Route::get('logout', 'LoginController@logout')->name('logout');
+
+    Route::get('/', function () {
+        return view('admin.dashboard.index');
+    });
+
+});
