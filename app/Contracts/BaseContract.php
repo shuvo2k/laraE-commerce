@@ -7,21 +7,20 @@ namespace App\Contracts;
  */
 interface BaseContract
 {
-     /**
+    /**
      * Create a model instance
      * @param array $attributes
      * @return mixed
      */
     public function create(array $attributes);
 
-     /**
+    /**
      * Update a model instance
      * @param array $attributes
      * @param int $id
      * @return mixed
      */
     public function update(array $attributes, int $id);
-
 
     /**
      * Return all model rows
@@ -46,7 +45,6 @@ interface BaseContract
      */
     public function findOneOrFail(int $id);
 
-
     /**
      * Find based on a different column
      * @param array $data
@@ -54,14 +52,12 @@ interface BaseContract
      */
     public function findBy(array $data);
 
-
-     /**
+    /**
      * Find one based on a different column
      * @param array $data
      * @return mixed
      */
     public function findOneBy(array $data);
-
 
     /**
      * Find one based on a different column or through exception
@@ -70,14 +66,10 @@ interface BaseContract
      */
     public function findOneByOrFail(array $data);
 
-
-     /**
+    /**
      * Delete one by Id
      * @param int $id
      * @return mixed
      */
     public function delete(int $id);
-
-
 }
-

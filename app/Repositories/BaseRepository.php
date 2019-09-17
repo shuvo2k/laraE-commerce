@@ -1,8 +1,9 @@
 <?php
 namespace App\Repositories;
+
 use App\Contracts\BaseContract;
 use Illuminate\Database\Eloquent\Model;
-
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 /**
  * Class BaseRepository
@@ -16,8 +17,7 @@ class BaseRepository implements BaseContract
      */
     protected $model;
 
-
-     /**
+    /**
      * BaseRepository constructor.
      * @param Model $model
      */
@@ -26,8 +26,7 @@ class BaseRepository implements BaseContract
         $this->model = $model;
     }
 
-
-     /**
+    /**
      * @param array $attributes
      * @return mixed
      */
@@ -36,18 +35,15 @@ class BaseRepository implements BaseContract
         return $this->model->create($attributes);
     }
 
-
-
-     /**
+    /**
      * @param array $attributes
      * @param int $id
      * @return bool
      */
-    public function update(array $attributes, int $id):bool
+    public function update(array $attributes, int $id): bool
     {
         return $this->find($id)->update($attributes);
     }
-
 
     /**
      * @param array $columns
@@ -60,7 +56,6 @@ class BaseRepository implements BaseContract
         return $this->model->orderBy($orderBy, $sortBy)->get($columns);
     }
 
-
     /**
      * @param int $id
      * @return mixed
@@ -69,7 +64,6 @@ class BaseRepository implements BaseContract
     {
         return $this->model->find($id);
     }
-
 
     /**
      * @param int $id
@@ -81,7 +75,6 @@ class BaseRepository implements BaseContract
         return $this->model->findOrFail($id);
     }
 
-
     /**
      * @param array $data
      * @return mixed
@@ -91,7 +84,6 @@ class BaseRepository implements BaseContract
         return $this->model->where($data)->all();
     }
 
-
     /**
      * @param array $data
      * @return mixed
@@ -100,7 +92,6 @@ class BaseRepository implements BaseContract
     {
         return $this->model->where($data)->first();
     }
-
 
     /**
      * @param array $data
@@ -112,15 +103,12 @@ class BaseRepository implements BaseContract
         return $this->model->where($data)->firstOrFail();
     }
 
-
     /**
      * @param int $id
      * @return bool
      */
-    public function delete(int $id) : bool
+    public function delete(int $id): bool
     {
         return $this->model->find($id)->delete();
     }
-
-
 }
